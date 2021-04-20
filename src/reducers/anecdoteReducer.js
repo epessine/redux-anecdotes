@@ -29,6 +29,12 @@ const reducer = (state = initialState, { type, data }) => {
           votes: anecdote.votes + 1
         };
       });
+    
+    case 'ADD_ANECDOTE':
+      return [
+        ...state,
+        data
+      ];
     default: return state;
   }
 };
@@ -37,7 +43,14 @@ export const voteAnecdote = (id) => {
   return {
     type: 'VOTE',
     data: { id }
-  }
+  };
 };
+
+export const addAnecdote = (content) => {
+  return {
+    type: 'ADD_ANECDOTE',
+    data: asObject(content)
+  };
+}
 
 export default reducer;
