@@ -16,17 +16,23 @@ const reducer = (state = initialState, { type, data }) => {
   }
 };
 
-export const setErrorNotification = message => {
-  return {
-    type: 'SET_NOTIFICATION',
-    data: { message, type: 'error' }
+export const setErrorNotification = (message, time) => {
+  return async dispatch => {
+    dispatch({
+      type: 'SET_NOTIFICATION',
+      data: { message, type: 'error' }
+    });
+    setTimeout(() => dispatch(hideNotification()), time);
   };
 };
 
-export const setSuccessNotification = message => {
-  return {
-    type: 'SET_NOTIFICATION',
-    data: { message, type: 'success' }
+export const setSuccessNotification = (message, time) => {
+  return async dispatch => {
+    dispatch({
+      type: 'SET_NOTIFICATION',
+      data: { message, type: 'success' }
+    });
+    setTimeout(() => dispatch(hideNotification()), time);
   };
 };
 
