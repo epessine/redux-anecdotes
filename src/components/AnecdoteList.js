@@ -2,7 +2,7 @@ import React from 'react';
 import Anecdote from './Anecdote';
 import { useSelector, useDispatch } from 'react-redux';
 import { voteAnecdote } from '../reducers/anecdoteReducer';
-import { setSuccessNotification, hideNotification } from '../reducers/notificationReducer';
+import { setSuccessNotification } from '../reducers/notificationReducer';
 
 const AnecdoteList = () => {
   const filter = useSelector(state => state.filter);

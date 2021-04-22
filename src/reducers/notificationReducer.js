@@ -16,23 +16,26 @@ const reducer = (state = initialState, { type, data }) => {
   }
 };
 
+let lastTimeout;
 export const setErrorNotification = (message, time) => {
+  clearTimeout(lastTimeout);
   return async dispatch => {
     dispatch({
       type: 'SET_NOTIFICATION',
       data: { message, type: 'error' }
     });
-    setTimeout(() => dispatch(hideNotification()), time);
+    lastTimeout = setTimeout(() => dispatch(hideNotification()), time);
   };
 };
 
 export const setSuccessNotification = (message, time) => {
+  clearTimeout(lastTimeout);
   return async dispatch => {
     dispatch({
       type: 'SET_NOTIFICATION',
       data: { message, type: 'success' }
     });
-    setTimeout(() => dispatch(hideNotification()), time);
+    lastTimeout = setTimeout(() => dispatch(hideNotification()), time);
   };
 };
 
